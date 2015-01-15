@@ -1,0 +1,10 @@
+#!/bin/bash
+case $1 in
+	liga)
+		echo "Desligando monitor"
+		xrandr --output LVDS --pos 160x1080 --output VGA-0 --auto --pos 0x0;;
+	desliga)
+		echo "desligando monitor"
+		xrandr --output VGA-0 --pos 0x0 --output VGA-0 --off;;
+	*)echo help;;
+esac
