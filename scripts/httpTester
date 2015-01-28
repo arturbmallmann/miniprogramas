@@ -1,0 +1,38 @@
+#!/bin/bash
+
+ACTION="GET"
+MIME="*/*"
+PATH="/"
+HOST="127.0.0.1"
+CSET="UTF-8"
+	function help(){
+				printf "Parameters:\n--host=\n--lang=\n--cset=\n--mime=\n--path=\n"
+				exit
+				}
+
+for param in $@
+	do
+		case $param in
+			--host=*)
+				HOST="Host: "${param:7};;
+			--lang=*)
+				LANGUAGE=${param:7};;
+			--cset=*)
+				CSET=${param:7};;
+			--mime=*)
+				MIME=${param:7};;
+			--path=*)
+				PATH=${param:7};;
+			--action*)
+				ACTION=${param:9};;
+			--help) help;;
+			-h) help;;
+		esac
+	done
+#DEFAULT STR: 	GET / HTTP/1.1
+#				Host: 127.0.0.1
+STR="${ACTION} ${PATH} HTTP/1.1
+Accept: ${MIME}
+Accept-Charset: ${CSET}
+Host: ${HOST}"
+printf "$STR\n\n"
