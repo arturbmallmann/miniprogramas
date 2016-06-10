@@ -1,0 +1,34 @@
+#!/bin/bash
+######
+# Author:	Artur Bernardo Mallmann
+# Email:	arturbmallmann@gmail.com
+# License:	Beerware
+
+if [[ $# -ne 0 ]]
+	then
+
+#Declaracao das variaveis
+TOTAL=0;
+#os passos iniciais
+ATUAL=0;ANT=1;
+		while ([[ $TOTAL -ne $#  ]]) #comparacao
+			do 
+				#teste para verificar se o n atual é igual a algum dos parametros
+				for a in $@ #confere parametro por parametro
+					do
+					if [[ $N -eq $a ]] #comparacao parametro e contador de controle
+						then
+						echo $ATUAL;
+						TOTAL=$((TOTAL + 1))
+						break #se encontrou podemos sair do for
+					fi
+					done
+				AUX=$((ATUAL + ANT)) #operacao n=(n-1)+(n-2)
+				ANT=$ATUAL
+				ATUAL=$AUX
+				N=$((N + 1)) #incrementar contador de controle
+			done
+
+else
+	echo  "passe por parametro os n-ésimos termos os quais deseja exibir"
+fi

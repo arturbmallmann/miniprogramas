@@ -1,0 +1,47 @@
+#!/bin/bash
+ligado=true
+#sempre que puder é legal usar variáveis de ambiente para manter compativel em qualquer ambiente e usuário
+#errado:
+#mp3=/home/usuario/.despertador/despertador.mp3
+#certo
+mp3=$HOME/.despertador/despertador.mp3
+if [[ $# -ne 0 ]]
+then
+
+FLAG=false
+for i in $@
+	do
+	
+		case $i in
+			-*) FLAG=false;;&				#caso vierem outros parametros a flag deve ser desativada
+						#;;& para ele passar pelos proximos casos de teste mesmo caindo no atual
+			*)
+				if $FLAG; then
+						mp3="${mp3} ${i}"
+				fi
+				;;&
+			-f*)
+				mp3=${i:2} 
+				FLAG=true #pois preciso concatenar o nome do arquivo agora, pois espaços sao considerados separadores de parametros :p
+				;;
+		esac
+done
+if [[ "${mp3:0:1}" == ' ' ]];then
+	mp3=${mp3:1} #tirar a virgula caso o nome esteja separado do parametro -f
+fi
+echo "Arquivo do despertador ${mp3}"
+while $ligado
+	do
+		sleep 2
+		DATA=`date`
+		echo ${DATA:11:5} #fatiamento da string de saida do comando dat3
+		if [ ${DATA:11:5} = $1 ];then
+			echo acorda
+			amixer -c 0 set Master 100% #Poem volume em 100%, sempre útil.. 
+			mplayer "$mp3" #chama arquivo mp3
+		fi
+	done
+
+else
+	echo $'Como usar: despertador HH:MM -f[local/do/arquivo.mp3] \nSe o parametro de arquivo nao for passado sera aberto o arquivo padrao '${mp3}
+fi

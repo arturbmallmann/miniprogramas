@@ -25,12 +25,12 @@ int main(){
 		}
 	}
 	if(idioma[0] == 'p' && idioma[1]== 't')
-		printf("português");
+		printf("português\n");
 	printf("Idioma %s, região %s \n",idioma,regiao);
 //	printf("%s",language);
 //	printf("%s \n",lang);
 	int valor;
-	printf("Entre o valor que deseja saber a funcionalidade");
+	printf("Entre o valor que deseja saber a funcionalidade:\n");
 	scanf("%i",&valor);
 	printf("%i \n",valor);
 //*	
