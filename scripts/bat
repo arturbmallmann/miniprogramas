@@ -1,0 +1,8 @@
+#!/bin/bash
+
+PARAM=`acpi`
+
+function split(){
+	echo ${4/,/ }
+}
+split $PARAM
