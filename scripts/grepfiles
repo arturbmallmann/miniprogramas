@@ -1,0 +1,8 @@
+#!/bin/bash
+for i in $1*
+	do
+		if [[ -n `cat $i |grep $2` ]]
+			then
+				echo $i;
+		fi
+	done;
