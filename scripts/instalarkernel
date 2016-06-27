@@ -1,0 +1,22 @@
+#!/bin/bash
+VER=$2
+DIR=$1
+
+SYS="cp ${DIR}/System.map /boot/System.map-${VER}"
+echo ${SYS}
+${SYS}
+
+CONFIG="cp ${DIR}/.config /boot/config-${VER}"
+echo ${CONFIG}
+${CONFIG}
+
+VM="cp ${DIR}/arch/x86_64/boot/bzImage /boot/vmlinuz-${VER}"
+echo ${VM}
+${VM}
+
+MK="mkinitramfs ${VER} -o /boot/initrd.img-${VER}"
+echo ${MK}
+${MK}
+
+echo update-grub
+update-grub
