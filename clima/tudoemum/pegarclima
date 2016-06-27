@@ -1,0 +1,58 @@
+#!/bin/bash
+wget http://www.cptec.inpe.br/cidades/tempo/228# -O clima
+CLIMA1=`cat clima`
+CLIMA=""
+rm clima
+GRAVAR=false
+for i in $CLIMA1
+  do
+	case $i in
+		*id=\"sub3\"\>*)
+			GRAVAR=true
+			;;
+		*id=\"ind\"\>*)
+			GRAVAR=false
+			;;
+	esac
+	if [[ $GRAVAR = true ]];then
+		CLIMA=$CLIMA$i
+	fi
+  done
+GRAVAR=false
+OPCAO=""
+
+	for i in `seq 0 ${#CLIMA}`
+		 do
+			case "${CLIMA:$i:3}" in
+			  \<b\>)GRAVAR=true;;
+			  \<\/b)GRAVAR=false;;
+			  \<im)if [[ $OPCAO = c5 ]];then
+					GRAVAR=false;OPCAO=v5;fi;;
+			  c2*)OPCAO=c2;;
+			  c3*)OPCAO=c3;;
+			  c4*)OPCAO="";;
+			  c5*)OPCAO=c5;;
+			  c7*)OPCAO=c7;;
+			esac
+			if [[ $GRAVAR = true ]];then
+				case $OPCAO in
+				c2)TEMP=$TEMP${CLIMA:$i:1};;
+				c3)UMID=$UMID${CLIMA:$i:1};;
+				c5)DIRV=$DIRV${CLIMA:$i:1};;
+				c7)DESC=$DESC${CLIMA:$i};;
+				v5)VELV=$VELV${CLIMA:$i:6};OPCAO="";;
+				esac
+			fi
+			if [[ $OPCAO = v5 && ${CLIMA:$i:1} = \> ]];then
+				GRAVAR=true
+			fi
+	done
+TEMP=${TEMP:3:2}
+echo "Temperatura: "$TEMP" ºC"
+UMID=${UMID:3}
+echo "Umidade: "$UMID
+DIRV=${DIRV:3}
+echo "Direção do vento: "$DIRV
+echo "Velocidade do vento: "$VELV
+DESC=${DESC:3}
+echo "Descrição do tempo: "$DESC

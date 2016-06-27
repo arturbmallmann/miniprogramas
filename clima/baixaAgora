@@ -1,0 +1,40 @@
+#!/bin/bash
+wget http://www.cptec.inpe.br/cidades/tempo/228# -O clima -q
+CLIMA1=`cat clima`
+CLIMA=""
+rm clima
+GRAVAR=false
+for i in $CLIMA1
+  do
+	case $i in
+		*id=\"sub3\"\>*)
+			GRAVAR=true
+			;;
+		*\"c7\"\>*)
+			GRAVAR=false
+			;;
+	esac
+	if [[ $GRAVAR = true ]];then
+		CLIMA=$CLIMA$i
+	fi
+  done
+echo $CLIMA > dados/hoje
+GRAVAR=false
+i=0
+for i in $CLIMA1
+  do
+        case $i in
+                id=\"tit\"\>*)
+			DIA=${CLIMA:9}
+                        GRAVAR=true
+                        ;;
+                id=\"c8\"\>*)
+                        GRAVAR=false
+                        ;;
+        esac
+        if [[ $GRAVAR = true ]];then
+                CLIMA=$CLIMA$i
+        fi
+	echo $DIA
+  done
+
