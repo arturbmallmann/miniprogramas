@@ -1,0 +1,112 @@
+#!/bin/bash
+#funcoes
+#ARGS=$@
+	function helpp {
+		echo "asse parametros:
+				[acao]
+				watch		- assistir
+				rec			- gravar
+				cortar		- -i arquivoentra -f arquivo saida
+				-t[tempo]	- tudo junto
+				-ss 		- tempo inicio
+				-f[saida]	- arquivo[numeroAuto].avi
+				-i			- arquivo entrada
+				-ni			- nao desintrelaçar imagem[desativado]
+				-qb			- qualidade baixa[desativado]
+				-qm			- qualidade média[desativado]
+				-qa			- qualidade alta[desativado]
+				-st			- som stereo
+				-d			- dispositivo(default=/dev/video1)=1
+				-v			- volume [0..100]
+				"
+				exit
+		}		
+	function createfile {
+		if [[ $FILE = "" ]];then 
+			FILE="VIDEO"
+		fi
+		NUMBER=0
+		while [ -f ${FILE}_${NUMBER}.mp4 ]
+			do
+				(( NUMBER++ ))
+			done
+		CFILE=${FILE}_${NUMBER}.mp4
+	}
+
+#o vf altera diretamente o conteudo
+DINTERLACE="-vf pp=lb,scale=640:480"
+TIME=""
+FILE=""
+LOGD=${HOME}/.capturar
+#BRVIDEO=1800
+#BRAUDIO=128
+DEVICE=1
+CHANNELS=1 #MONO
+VOLUME=50
+#TVSTR="-tv alsa=yes:audiorate=48000:amode=0:device=/dev/video1:adevice=hw.DVC100,0:norm=PAL-M:volume=10:immediatemode=0:forceaudio=1"
+TVSTR="-tv alsa=yes:audiorate=48000:amode=0:device=/dev/video1:adevice=hw.SB:norm=PAL-M:volume=10:immediatemode=0:forceaudio=1:forcechan=1"
+if [ ! -d $LOGD ];then
+	mkdir $LOGD
+fi
+#"-tv fps=30:alsa=yes:audiorate=48000:device=/dev/video1:adevice=hw.DVC100,0:norm=PAL-M:volume=100:forceaudio=1"
+for i in $@
+do	
+	case $i in
+#		\-t*)TIME=" -endpos "${i:2}" ";;
+		\-t*)TIME=" -t ${i:2}";;
+		\-ss*)BEGIN=" -ss ${i:3}";;
+		\-f*)FILE=${i:2};;
+		\-i*)INPUT=${i:2};;
+		\-ni)DINTERLACE="";;
+		\-v*)VOLUME=${i:2};;
+#		\-qb)BRVIDEO=1200;BRAUDIO=96;;
+#		\-qm)BRVIDEO=1800;BRAUDIO=128;;
+#		\-qa)BRVIDEO=2600;BRAUDIO=192;;
+		\-d*)DEVICE=${i:2};;
+		\-st)CHANNELS=2;;
+		-h)helpp;;
+		--help)helpp;;
+	esac
+done
+	v4l2-ctl -s PAL-M -d /dev/video$DEVICE
+	case $1 in
+		watch)
+			mplayer tv:// ${TVSTR} ${DINTERLACE}
+		;;
+		rec)
+			createfile
+			avconv -f video4linux2 -i /dev/video$DEVICE -f alsa -i hw:SB -qscale 1.33 -r 24.00 -vf yadif,scale=640:480:-1 -b:a 320k -vol $VOLUME -acodec libmp3lame -ac $CHANNELS $TIME -y $CFILE -threads 12 # > ${LOGD}/rec.out 2>${LOGD}/rec.err
+		;;
+		recw)
+			mkfifo ./pipe
+			cat ./pipe|tee -a -i $CFILE|mplayer pipe --cache=8196
+			avconv -f video4linux2 -i /dev/video$DEVICE -f alsa -i hw:SB -qscale 1.33 -r 24.00 -vf yadif,scale=640:480:-1 -b:a 320k -vol $VOLUME -acodec libmp3lame -ac $CHANNELS $TIME -threads 12 -f avi pipe:pipe 
+			#|tee -a -i $CFILE| mplayer - --cache=8196
+			rm pipe
+		;;
+		cortar)
+			createfile
+			avconv -i ${INPUT} -vcodec copy -acodec copy $BEGIN $TIME -y $CFILE # > ${LOGD}/conv.out 2>${LOGD}/conv.err
+			;;
+		cortarmono)
+			createfile
+			avconv -i ${INPUT} -vcodec copy -acodec libmp3lame -ac 1 $BEGIN $TIME -y $CFILE # > ${LOGD}/conv.out 2>${LOGD}/conv.err
+			;;
+		*)helpp;;
+	esac
+
+	#mencoder tv:// ${TVSTR} ${DINTERLACE} -oac lavc -ovc lavc -ofps 29.97 -lavcopts  abitrate=192:acodec=ac3:vcodec=mpeg4:vbitrate=1200:aspect=1.33x1 -noskip -o video.avi;;
+#		if [ $1 = "recw" ];then
+#			mkfifo ./pipe
+#			cat ./pipe|tee -a -i ./cache|mplayer - > $LOGD/run.out 2> $LOGD/run.err &
+#			mencoder tv:// ${TVSTR} ${DINTERLACE} -noskip -oac mp3lame -ovc lavc -ofps 24 -of avi -lameopts br=$BRAUDIO:mode=$SOM:vol=10:vbr=3 -lavcopts vbitrate=$BRVIDEO:vcodec=mpeg4:mbd=$MBD:autoaspect -o pipe > $LOGD/cap.out 2> $LOGD/cap.err
+#			kill `pidof mplayer mencoder cat`
+#			mencoder ./cache -idx -oac copy -ovc copy -o $CFILE > $LOGD/conv.out 2> $LOGD/conv.err
+#			rm ./pipe ./cache
+#		fi
+
+#!/bin/bash
+#mencoder tv:// -v -tv alsa=yes:audiorate=48000:amode=1:adevice=hw.DVC100,0:volume=100:immediatemode=0:forceaudio=1 -o outfile.avi -ovc lavc -lavcopts vcodec=mjpeg:aspect=4/3 -aspect 4:3 -noautoexpand -oac pcm -endpos 01:17:00 -noskip
+#mplayer tv:// -tv alsa=yes:audiorate=48000:amode=1:device=/dev/video1:adevice=hw.DVC100,0:norm=PAL-M:volume=100:immediatemode=0:forceaudio=1 -vo gl
+#mencoder tv:// -v -tv fps=30:alsa=yes:audiorate=48000:amode=1:device=/dev/video1:adevice=hw.DVC100,0:norm=PAL-M:volume=100:immediatemode=0:forceaudio=1 -o teste.avi -ovc lavc -lavcopts vcodec=mjpeg:aspect=4/3 -aspect 4:3 -noautoexpand -oac lavc -noskip -vf pp=lb,scale=640:480 -endpos 00:00:10
+

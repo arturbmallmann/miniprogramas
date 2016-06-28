@@ -1,0 +1,41 @@
+#!/bin/bash
+wget http://www.cptec.inpe.br/cidades/tempo/228# -O clima
+CLIMA1=`cat clima`
+CLIMA=""
+rm clima
+GRAVAR=false
+for i in $CLIMA1;do;
+	case $i in
+		id="sub3">Condi&ccedil;&otilde;es)
+			GRAVAR=true;;
+		id="ind">)
+			GRAVAR=false;;
+	esac
+	if [[ GRAVAR = true ]];then
+		CLIMA=$CLIMA$i
+	fi
+do			
+GRAVAR=false
+TEXTO=""
+count=0
+
+echo $CLIMA
+			for i in `seq 0 ${#CLIMA}`
+				do
+				echo ${CLIMA:$i:1}	
+				case "${CLIMA:$i:3}" in
+				   \<b\>) echo b1
+					GRAVAR=true
+				  ;;
+				   \<\/b)echo b2
+					GRAVAR=false
+					  ;;
+				  c2*)echo c2
+					if [[ $GRAVAR = true ]]; then
+                                          TEMP=$TEMP${CLIMA:$i:1}
+                                         fi
+
+				esac
+			done
+echo $TEMP
+

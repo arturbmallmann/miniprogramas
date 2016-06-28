@@ -1,0 +1,7 @@
+#!/bin/bash
+DIR=`pwd`
+while true
+do
+$DIR/pegarclima $DIR > $DIR/dados/clima
+sleep 600
+done

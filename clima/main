@@ -1,0 +1,16 @@
+#!/bin/bash
+case $1 in	
+	saida)sed -n '/png/!p' $HOME/clima/dados/clima;;
+	*)
+	while true
+		do
+		$HOME/clima/pegarclima $HOME/clima > $HOME/clima/dados/climaAtual
+
+		if [[ `cat $HOME/clima/dados/baixou` = y ]];then
+			cp $HOME/clima/dados/climaAtual $HOME/clima/dados/clima
+			sleep 600
+		elif [[ `cat $HOME/clima/dados/baixou` = n ]];then
+			sleep 5
+		fi
+	done;;
+esac
