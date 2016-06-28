@@ -3,6 +3,14 @@
 PARAM=`acpi`
 
 function split(){
-	echo ${4/,/ }
+	echo ${4/,/}`
+	case ${3:0:1} in
+		C)
+			echo '+';;
+		D)
+			echo '-';;
+		U)
+			echo '?';;
+	esac `
 }
 split $PARAM
