@@ -1,8 +1,22 @@
 #!/bin/bash
+OUTPUT=""
+FIRST=true
 for i in $1/*
 	do
 		if [[ -n `cat $i 2>/dev/null |grep $2 ` ]]
 			then
-				echo $i;
+				if [[ $FIRST == true ]]
+					then
+						FIRST=false
+					else
+						OUTPUT+=$'\n'
+				fi
+				OUTPUT+=$i
 		fi
 	done;
+if [[ -n $3 ]]
+	then
+		echo "$OUTPUT" | ./catchline $3
+	else
+		echo "$OUTPUT"
+fi
