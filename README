@@ -1,11 +1,92 @@
 Repositório apenas com porcarias!
-Não leve a sério nada coloco aqui, pois para mim sao úteis!
+Não leve a sério nada coloco aqui, pois para mim sao úteis
 .
+├── clima
+│   ├── baixaAgora
+│   ├── bak
+│   │   ├── baixaAgora
+│   │   ├── baixaAgora~
+│   │   ├── main
+│   │   └── pegarclima
+│   ├── clima
+│   ├── dados
+│   │   ├── baixou
+│   │   ├── clima
+│   │   ├── climaAtual
+│   │   ├── foto
+│   │   ├── hoje
+│   │   └── i.png
+│   ├── icones
+│   │   ├── ch.png
+│   │   ├── ci.png
+│   │   ├── cl.png
+│   │   ├── cm.png
+│   │   ├── cn.png
+│   │   ├── c.png
+│   │   ├── ct.png
+│   │   ├── cv.png
+│   │   ├── ec.png
+│   │   ├── e.png
+│   │   ├── g.png
+│   │   ├── in.png
+│   │   ├── ncm.png
+│   │   ├── ncn.png
+│   │   ├── nct.png
+│   │   ├── nd.png
+│   │   ├── ne.png
+│   │   ├── npm.png
+│   │   ├── n.png
+│   │   ├── npn.png
+│   │   ├── np.png
+│   │   ├── npp.png
+│   │   ├── npt.png
+│   │   ├── nv.png
+│   │   ├── pcm.png
+│   │   ├── pcn.png
+│   │   ├── pc.png
+│   │   ├── pct.png
+│   │   ├── pm.png
+│   │   ├── pn.png
+│   │   ├── pnt.png
+│   │   ├── ppm.png
+│   │   ├── ppn.png
+│   │   ├── pp.png
+│   │   ├── ppt.png
+│   │   ├── psc.png
+│   │   ├── ps.png
+│   │   ├── pt.png
+│   │   ├── t.png
+│   │   └── vn.png
+│   ├── main
+│   ├── output
+│   │   └── audit.txt
+│   ├── pegarclima
+│   ├── tudoemum
+│   │   ├── pegarclima
+│   │   └── pegarclima~
+│   └── wget-log
+├── fuse
+│   └── hello.c
 ├── home
+├── hospital_prolog
 ├── modUser
 │   └── main.cpp
+├── OS_UFSC
+│   ├── atividade1
+│   └── atividade2
+├── quicksort.c
 ├── README
 └── scripts
-    └── monitor
+    ├── bat
+    ├── capturar
+    ├── catchline
+    ├── changeSSHVar
+    ├── despertador
+    ├── fibonacci
+    ├── grepfiles
+    ├── httpTester
+    ├── instalarkernel
+    ├── monitor
+    └── vncservertunel
 
-3 directories, 3 files
+14 directories, 73 files

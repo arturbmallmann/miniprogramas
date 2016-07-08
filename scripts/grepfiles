@@ -1,7 +1,18 @@
 #!/bin/bash
+
+my_dir="$(dirname "$0")"
+
+#. "$my_dir/catchline"
 OUTPUT=""
 FIRST=true
-for i in $1/*
+AS_R=false
+DIR=$1
+#for i in $@
+#	do
+					
+#	done
+
+for i in `find $1`
 	do
 		if [[ -n `cat $i 2>/dev/null |grep $2 ` ]]
 			then
@@ -16,7 +27,7 @@ for i in $1/*
 	done;
 if [[ -n $3 ]]
 	then
-		echo "$OUTPUT" | ./catchline $3
+		echo "$OUTPUT" | $my_dir/catchline $3
 	else
 		echo "$OUTPUT"
 fi
