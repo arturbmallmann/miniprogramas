@@ -23,7 +23,7 @@ function sif () {
 	FIRST=true
 		for i in $@
 			do
-				if [[ -n `cat $i 2>/dev/null |grep $GPARAM $KEYWORD ` ]]
+				if [[ -n `cat $i 2>/dev/null |grep $GPARAM$KEYWORD ` ]]
 					then
 						if [[ $FIRST == true ]]
 							then
@@ -61,7 +61,7 @@ function main () {
 				;;
 			-*)
 				echo [entrou]
-				GPARAM+=$arg
+				GPARAM+=$arg\ 
 				;;
 			*)
 				case $argc in
