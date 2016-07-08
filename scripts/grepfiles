@@ -1,33 +1,108 @@
 #!/bin/bash
+#################################################
+# author: Artur Bernardo Mallmann
+# email: arturbmallmann (at) gmail (dot) com
+#################################################
 
-my_dir="$(dirname "$0")"
+debug=false
+# for imports:
+# my_dir="$(dirname "$0")" 
+#. "$my_dir/catchline" or source "" to load functions and attributes
 
-#. "$my_dir/catchline"
 OUTPUT=""
-FIRST=true
-AS_R=false
-DIR=$1
-#for i in $@
-#	do
-					
-#	done
+KEYWORD=""
 
-for i in `find $1`
-	do
-		if [[ -n `cat $i 2>/dev/null |grep $2 ` ]]
-			then
-				if [[ $FIRST == true ]]
+help () {
+	echo "Use:"
+	echo "	grepfiles dir word [catchoutputline]"
+	echo "Arguments:"
+	echo "	-r/-R for recursive search"
+}
+
+function sif () {
+	FIRST=true
+		for i in $@
+			do
+				if [[ -n `cat $i 2>/dev/null |grep $KEYWORD ` ]]
 					then
-						FIRST=false
-					else
-						OUTPUT+=$'\n'
+						if [[ $FIRST == true ]]
+							then
+								FIRST=false
+							else
+								OUTPUT+=$'\n'
+						fi
+						OUTPUT+=$i
 				fi
-				OUTPUT+=$i
-		fi
-	done;
-if [[ -n $3 ]]
-	then
-		echo "$OUTPUT" | $my_dir/catchline $3
+			done;
+			return 0
+}
+
+function catchline () {
+	head -n $1 |tail -n 1
+}
+
+function main () {
+
+	argc=0
+	REC=false
+	line=0
+	for arg in $@
+		do
+		case $arg in
+			-R)
+				REC=true
+				;;
+			-r)
+				REC=true
+				;;
+			--help)
+				help
+				exit
+				;;
+			*)
+				case $argc in
+					0) 
+						FOLDER=$arg
+						;;
+					1) 
+						KEYWORD=$arg
+						;;
+					2)
+						line=$arg
+				esac
+				argc=$((argc + 1))
+				;;
+		esac
+	done
+	if $REC
+		then
+		FILES=`find $FOLDER`
 	else
-		echo "$OUTPUT"
-fi
+		FILES=`ls ${FOLDER}`
+	fi
+
+	if $debug
+		then
+		echo folder: $FOLDER
+		echo files: $FILES	
+		echo keyword: $KEYWORD
+		echo line: $line
+	fi
+
+	if [[ -n $KEYWORD ]]
+		then
+		sif $FILES
+	else
+		help
+	fi
+	if [[ $line -ne 0 ]]
+		then
+			echo "$OUTPUT" | catchline $line
+#			echo "$OUTPUT" |$my_dir/catchline $line
+		else
+			echo "$OUTPUT"
+	fi
+}
+
+main $@
+
