@@ -11,10 +11,10 @@ debug=false
 
 OUTPUT=""
 KEYWORD=""
-
+GPARAM=""
 help () {
 	echo "Use:"
-	echo "	grepfiles dir word [catchoutputline]"
+	echo "	grepfiles dir word [catchoutputline] [grep options]"
 	echo "Arguments:"
 	echo "	-r/-R for recursive search"
 }
@@ -23,7 +23,7 @@ function sif () {
 	FIRST=true
 		for i in $@
 			do
-				if [[ -n `cat $i 2>/dev/null |grep $KEYWORD ` ]]
+				if [[ -n `cat $i 2>/dev/null |grep $GPARAM $KEYWORD ` ]]
 					then
 						if [[ $FIRST == true ]]
 							then
@@ -59,6 +59,10 @@ function main () {
 				help
 				exit
 				;;
+			-*)
+				echo [entrou]
+				GPARAM+=$arg
+				;;
 			*)
 				case $argc in
 					0) 
@@ -81,20 +85,13 @@ function main () {
 		FILES=`ls ${FOLDER}`
 	fi
 
-	if $debug
-		then
-		echo folder: $FOLDER
-		echo files: $FILES	
-		echo keyword: $KEYWORD
-		echo line: $line
-	fi
-
 	if [[ -n $KEYWORD ]]
 		then
 		sif $FILES
 	else
 		help
 	fi
+
 	if [[ $line -ne 0 ]]
 		then
 			echo "$OUTPUT" | catchline $line
