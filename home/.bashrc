@@ -113,3 +113,4 @@ if ! shopt -oq posix; then
 fi
 PATH=${PATH}:${HOME}/local/bin:$HOME/local/src/miniprogramas/scripts
 alias git-log='git log --graph --pretty=format:"%H %s %n <%an> %d"'
+alias la="ls -lah"
