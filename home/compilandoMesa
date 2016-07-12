@@ -1,0 +1,3 @@
+CC=clang CXX=clang++ ./autogen.sh --enable-nine --with-dri-drivers=radeon --enable-dri3 --prefix=/usr/local
+MESA_GL_VERSION_OVERRIDE=4.1COMPAT MESA_GLSL_VERSION_OVERRIDE=410 LD_PRELOAD=/home/artur/local/src/mesa/lib/libGL.so LIBGL_DRIVERS_PATH=/home/artur/local/src/mesa/lib/gallium
+Deps: libexpat1-dev libexpat1 expat x11proto-present-dev x11proto-dri3-dev x11proto-dri3-dev libdrm2 python-mako flex bison

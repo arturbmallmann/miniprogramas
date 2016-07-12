@@ -121,3 +121,4 @@ alias xbindremoto='xbindkeys -f ~/.xbindremoto'
 alias conectanote='ssh artur@salsicha2.local -X -C -L 9091:localhost:9091 -p 9871 -L 5900:localhost:5900'
 alias extractaudio="avconv -i $1 -map 0:1 -c:a pcm_s16le -ar 8000 $1.wav"
 alias extractaudio="avconv -i $0 -map 0:1 -c:a pcm_s16le -ar 8000 $0.wav"
+PATH=$PATH:$HOME/local/src/miniprogramas/scripts/
