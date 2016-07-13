@@ -1,2 +1,2 @@
 #!/bin/bash
-ssh -t -L 5900:localhost:5900 $1 -C 'x11vnc -localhost -display :0 -pm 4'
+ssh -t -L 5900:localhost:5900 $1 -C 'x11vnc -localhost -display :1 -pm 4'

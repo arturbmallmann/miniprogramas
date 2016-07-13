@@ -106,19 +106,18 @@ cat ~/mani3
 export CLICOLOR=TRUE
 alias conectarwlan='ssh -p 9871 -X -C artur@192.168.1.224'
 alias conectarcross='ssh -p 9871 -X -C artur@10.0.0.1'
-if [ -f /usr/bin/schroot ];then
-alias chrun='schroot -c jessie -p'
-alias steam='schroot -c jessie -p steam'
-alias dosbox='schroot -c jessie -p dosbox'
-alias zsnes='schroot -c jessie -p zsnes'
-fi
-PATH=$PATH:~/local/bin
+#if [ -f /usr/bin/schroot ];then
+#alias chrun='schroot -c jessie -p'
+#alias steam='schroot -c jessie -p steam'
+#alias dosbox='schroot -c jessie -p dosbox'
+#alias zsnes='schroot -c jessie -p zsnes'
+#fi
+PATH=$PATH:~/local/bin:$HOME/local/src/miniprogramas/scripts
 C_INCLUDE_PATH=$C_INCLUDE_PATH:/usr/include/glib-2.0 #mesmo efeito de -I/...
 CFLAGS="${CFLAGS} -march=bdver1 -mtune=bdver1 -O2"
 CXXFLAGS=${CFLAGS}
 alias rm='rm -i'
 alias xbindremoto='xbindkeys -f ~/.xbindremoto'
-alias conectanote='ssh artur@salsicha2.local -X -C -L 9091:localhost:9091 -p 9871 -L 5900:localhost:5900'
+alias conectanote='ssh artur@hpartur.local -X -C -L  -L 5900:localhost:5900'
 alias extractaudio="avconv -i $1 -map 0:1 -c:a pcm_s16le -ar 8000 $1.wav"
 alias extractaudio="avconv -i $0 -map 0:1 -c:a pcm_s16le -ar 8000 $0.wav"
-PATH=$PATH:$HOME/local/src/miniprogramas/scripts/
