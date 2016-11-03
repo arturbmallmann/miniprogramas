@@ -1,0 +1,4 @@
+Para compilar digite: make
+
+caso nao tenha o make instalado:
+g++ *.cpp -o gs.bin

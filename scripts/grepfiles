@@ -25,7 +25,7 @@ function sif () {
 			do
 				if [[ -n `cat $i 2>/dev/shm/.grepfileslog |grep $GPARAM $KEYWORD ` ]]
 					then
-						echo [entrou]
+#						echo [entrou]
 						if [[ $FIRST == true ]]
 							then
 								FIRST=false
@@ -85,7 +85,7 @@ function main () {
 	else
 		FILES=`ls ${FOLDER}`
 	fi
-	1>&2 echo $FILES 
+#	1>&2 echo $FILES 
 	if [[ -n $KEYWORD ]]
 		then
 		sif $FILES
