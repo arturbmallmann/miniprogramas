@@ -25,7 +25,7 @@ function sif () {
 			do
 				if [[ -n `cat $i 2>/dev/shm/.grepfileslog |grep $GPARAM $KEYWORD ` ]]
 					then
-						echo [entrou]
+#						echo [entrou]
 						if [[ $FIRST == true ]]
 							then
 								FIRST=false
