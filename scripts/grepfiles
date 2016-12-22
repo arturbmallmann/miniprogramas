@@ -85,7 +85,7 @@ function main () {
 	else
 		FILES=`ls ${FOLDER}`
 	fi
-	1>&2 echo $FILES 
+#	1>&2 echo $FILES 
 	if [[ -n $KEYWORD ]]
 		then
 		sif $FILES
