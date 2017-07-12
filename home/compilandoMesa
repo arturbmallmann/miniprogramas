@@ -5,6 +5,17 @@ melhor>
 CC=clang CXX=clang++ ./configure --enable-nine --with-dri-drivers=radeon --with-gallium-drivers=r600,swrast
 CC=clang CXX=clang++ ./configure --build=x86_64-pc-linux-gnu --host=i686-pc-linux-pc --enable-nine --with-dri-drivers=radeon --with-gallium-drivers=r600,swrast
 
+amdgpu>
+
+CC=clang CXX=clang++ ./configure --enable-nine --with-dri-drivers=amdgpu --with-gallium-drivers=radeonsi,swrast 
+
+
+
 MESA_GL_VERSION_OVERRIDE=4.1COMPAT MESA_GLSL_VERSION_OVERRIDE=410 LD_PRELOAD=/home/artur/local/src/mesa/lib/libGL.so LIBGL_DRIVERS_PATH=/home/artur/local/src/mesa/lib/gallium
 
 MESA_GL_VERSION_OVERRIDE=4.1COMPAT MESA_GLSL_VERSION_OVERRIDE=410 LD_LIBRARY_PATH=/home/artur/local/src/mesa/lib LIBGL_DRIVERS_PATH=/home/artur/local/src/mesa/lib/gallium %command%
+radeonsi>
+CC=clang CXX=clang++ ./configure --enable-nine --with-dri-drivers=radeon --with-gallium-drivers=radeonsi,swrast --with-egl-platforms=drm 
+CC=clang CXX=clang++ ./configure --enable-nine --with-dri-drivers=radeon --with-gallium-drivers=radeonsi,swrast 
+./configure --with-gallium-drivers=radeonsi,swrast --with-egl-platforms=drm --enable-glx  --enable-nine
+sudo apt-get install libtxc-dxtn-s2tc*
