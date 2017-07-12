@@ -115,3 +115,4 @@ PATH=${PATH}:${HOME}/local/bin:$HOME/local/src/miniprogramas/scripts
 alias git-log='git log --graph --pretty=format:"%H %s %n <%an> %d"'
 alias la="ls -lah"
 alias rm="rm -I"
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"

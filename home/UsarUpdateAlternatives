@@ -1,0 +1,10 @@
+sudo update-alternatives --install /usr/local/bin/top top /usr/bin/top 10
+sudo update-alternatives --install /usr/local/bin/top top /usr/bin/vtop 10
+sudo update-alternatives --install /usr/local/bin/top top /usr/bin/hop 10
+
+depois para escolher qual deles usar com o comando top você intercalaria assim:
+sudo update-alternatives --set top /usr/bin/vtop
+ou
+sudo update-alternatives --set top /usr/bin/htop
+ou
+sudo update-alternatives --set top /usr/bin/top
