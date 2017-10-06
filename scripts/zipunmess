@@ -1,5 +1,5 @@
 #!/bin/bash
 for file in `unzip -l $1 |tail -n +4|head -n -2|awk '{print $4}'`
 	do
-		rm -rf COUNT=$(( $COUNT+1 )) $file
+		rm -rf $file
 	done
