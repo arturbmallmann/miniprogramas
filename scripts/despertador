@@ -5,6 +5,7 @@ ligado=true
 #mp3=/home/usuario/.despertador/despertador.mp3
 #certo
 mp3=$HOME/.despertador/despertador.mp3
+command=mpv
 if [[ $# -ne 0 ]]
 then
 
@@ -38,7 +39,7 @@ while $ligado
 		if [ ${DATA:11:5} = $1 ];then
 			echo acorda
 			amixer -c 0 set Master 100% #Poem volume em 100%, sempre útil.. 
-			mplayer "$mp3" #chama arquivo mp3
+			$command "$mp3" #chama arquivo mp3
 		fi
 	done
 
