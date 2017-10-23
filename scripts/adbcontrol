@@ -1,0 +1,23 @@
+#!/bin/bash
+zfile=/tmp/adbcontrol.zip
+dir=~/.adbcontrol
+if [ -d $dir ] && [ -f $dir/adbcontrol.jar ]
+	then
+		echo existe
+	else
+		wget -v http://marian.schedenig.name/wp-content/uploads/adbcontrol.zip -O $zfile 
+		mkdir ~/.adbcontrol
+		if [ ! -f $zfile ]
+			then
+				rm -r $dir
+				exit
+		fi
+		unzip $zfile -d ~/.adbcontrol
+		
+		echo "adbCommand = adb
+		screenshotDelay = 100
+		localImageFilePath = /tmp/adbcontrol_screenshot.png
+		phoneImageFilePath = /mnt/sdcard/adbcontrol_screenshot.png" > $dir/config.properties
+	fi
+cd ~/.adbcontrol/
+java -jar adbcontrol.jar
