@@ -23,7 +23,7 @@ sudo apt-get install libtxc-dxtn-s2tc*
 GALLIUM HUD:
 
 vblank_mode=0(desabilita sync)
-GALLIUM_HUD=".w80cpu;.w80VRAM-usage;.w80dfps"
+GALLIUM_HUD=".w80cpu;.w80VRAM-usage;.w80.dfps"
 GALLIUM_HUD=help
 .w(largura) .h(altura)
 
