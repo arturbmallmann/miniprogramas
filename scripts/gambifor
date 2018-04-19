@@ -1,0 +1,1 @@
+var=;for i in radeon/bonaire_*; do var=radeon/bonaire_ce.bin radeon/bonaire_k_smc.bin radeon/bonaire_mc.bin radeon/bonaire_me.bin radeon/bonaire_mec.bin radeon/bonaire_pfp.bin radeon/bonaire_rlc.bin radeon/bonaire_sdma1.bin radeon/bonaire_sdma.bin radeon/bonaire_smc.bin radeon/bonaire_uvd.bin radeon/bonaire_vce.bin radeon/bonaire_vce.bin' '; done

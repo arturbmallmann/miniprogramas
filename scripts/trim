@@ -1,0 +1,11 @@
+#!/bin/sh
+LOG=/var/log/trim.log
+echo "*** $(date -R) ***" >> $LOG
+fstrim -v / >> $LOG
+fstrim -v /home >> $LOG 
+#/etc/cron.daily/trim
+#fonte: http://www.edivaldobrito.com.br/como-ativar-o-trim-em-discos-ssd-no-ubuntu-linux/
+#fonte: http://ubuntuhandbook.org/index.php/2013/12/enable-trim-ssd-better-performance/
+
+#fstab: options: errors=remount,discard,noatime
+#fonte: https://www.makeuseof.com/tag/optimize-linux-ssds/

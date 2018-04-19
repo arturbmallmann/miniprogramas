@@ -9,7 +9,7 @@ amdgpu>
 
 CC=clang CXX=clang++ ./configure --enable-nine --with-dri-drivers=amdgpu --with-gallium-drivers=radeonsi,swrast 
 
-
+Usando mesa:
 
 MESA_GL_VERSION_OVERRIDE=4.1COMPAT MESA_GLSL_VERSION_OVERRIDE=410 LD_PRELOAD=/home/artur/local/src/mesa/lib/libGL.so LIBGL_DRIVERS_PATH=/home/artur/local/src/mesa/lib/gallium
 
@@ -19,3 +19,14 @@ CC=clang CXX=clang++ ./configure --enable-nine --with-dri-drivers=radeon --with-
 CC=clang CXX=clang++ ./configure --enable-nine --with-dri-drivers=radeon --with-gallium-drivers=radeonsi,swrast 
 ./configure --with-gallium-drivers=radeonsi,swrast --with-egl-platforms=drm --enable-glx  --enable-nine
 sudo apt-get install libtxc-dxtn-s2tc*
+
+GALLIUM HUD:
+
+vblank_mode=0(desabilita sync)
+GALLIUM_HUD=".w80cpu;.w80VRAM-usage;.w80.dfps"
+GALLIUM_HUD=help
+.w(largura) .h(altura)
+
++ linha
+, apenas var
+; coluna
