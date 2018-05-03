@@ -1,0 +1,21 @@
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+mount --bind /dev/ /stable-chroot/dev/
+mount -t devpts devpts /stable-chroot/dev/pts/
+mount -t proc proc /stable-chroot/proc
+mount -t sysfs sys /stable-chroot/sys/
+
+mount --bind /var/lib/mysql-10.2 /stable-chroot/var/lib/mysql/
+mount --bind /home/ /stable-chroot/home/
+exit 0
