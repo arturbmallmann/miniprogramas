@@ -2,7 +2,7 @@
 #include <stdio.h>
 long double f(long double h){
     int r=1;
-	return 12.4 - 10*(((0.5*3.141592 -asin(h/r))*r-h)*r+h*h)  ;
+	return -12.4 + 10*(((0.5*3.141592 -asin(h/r))*r-h)*r+h*h)  ;
 }
 
 int check(long double a,long double b){

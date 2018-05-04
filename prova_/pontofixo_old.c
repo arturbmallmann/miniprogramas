@@ -1,7 +1,7 @@
 #include <math.h>
 #include <stdio.h>
 long double phix(long double x){
-	return acos(-x*x/10) ;
+	return sqrt(-10*cos(x)) ;
 }
 long double fx(long double x){
     return pow(x,2)+10*cos(x);

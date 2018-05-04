@@ -1,10 +1,11 @@
 #include <math.h>
 #include <stdio.h>
-long double phix(long double x){
-	return acos(-x*x/10) ;
+long double euler=2.718281828;
+long double phix(long double t){
+    return (300 + 201.0625*(1-pow(euler,-0.4*t)))/80.425;
 }
-long double fx(long double x){
-    return pow(x,2)+10*cos(x);
+long double fx(long double t){
+    return 300 - 80.425*t + 201.0625*(1-pow(euler,-0.4*t));
 }
 int check(long double a,long double b){
 	long double dif = a-b;
@@ -12,6 +13,7 @@ int check(long double a,long double b){
 //	printf("dif |%Lf - %Lf| = %Lf",a,b,dif);
 	if(dif >= powl(10.,-4))
 		return true;
+	printf("dif: %Lf",dif);
 	return false;
 }
 int main (){
