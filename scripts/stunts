@@ -11,14 +11,14 @@ for arg in $@
 		case $arg in
 			-f) 	FULLSCREEN=true
 				;;
+			-default)	CONFIGFILE=""
+				;;
 		esac
 	done
 CONF="`if [ ${CONFIGFILE} ];then echo -conf ${CONFIGFILE};fi`"
 FULL="`if [ ${FULLSCREEN} ];then echo -fullscreen;fi`"
 PARAM="${CONF} ${FULL} -exit"
 cd $GAMEDIR
-pwd
-echo $CONF
 if [[ $1 == "setup" ]]
 	then
 	${PROGRAM} ${SETUP} ${PARAM}
