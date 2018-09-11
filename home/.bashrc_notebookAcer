@@ -16,3 +16,4 @@ PS1=" (\$($BAT)\$(check)) \[\033]0;\u@\h:\w\007\]\[\033[01;32m\]\u@\h\[\033[01;3
 #echo $PS1
 alias ll='ls -lh'
 alias la='ls -lah'
+alias l="ls -l"
