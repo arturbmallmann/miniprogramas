@@ -1,0 +1,1 @@
+PATH=${PATH}:${HOME}/local/bin:${HOME}/local/src/miniprogramas/scripts/:/home/artur/.local/bin

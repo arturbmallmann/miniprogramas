@@ -1,0 +1,28 @@
+#!/bin/bash
+GAMEDIR=${HOME}/Games/STUNTS
+EXEC=STUNTS_K.EXE
+SETUP=SETUP.EXE
+
+PROGRAM="/usr/bin/dosbox"
+CONFIGFILE="${HOME}/.dosbox/stunts.conf"
+
+for arg in $@
+	do
+		case $arg in
+			-f) 	FULLSCREEN=true
+				;;
+			-default)	CONFIGFILE=""
+				;;
+		esac
+	done
+CONF="`if [ ${CONFIGFILE} ];then echo -conf ${CONFIGFILE};fi`"
+FULL="`if [ ${FULLSCREEN} ];then echo -fullscreen;fi`"
+PARAM="${CONF} ${FULL} -exit"
+cd $GAMEDIR
+if [[ $1 == "setup" ]]
+	then
+	${PROGRAM} ${SETUP} ${PARAM}
+else
+	${PROGRAM} ${EXEC} ${PARAM}
+fi
+
