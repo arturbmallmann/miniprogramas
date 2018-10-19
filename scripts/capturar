@@ -111,4 +111,4 @@ done
 #mplayer tv:// -tv alsa=yes:audiorate=48000:amode=1:device=/dev/video1:adevice=hw.DVC100,0:norm=PAL-M:volume=100:immediatemode=0:forceaudio=1 -vo gl
 #mencoder tv:// -v -tv fps=30:alsa=yes:audiorate=48000:amode=1:device=/dev/video1:adevice=hw.DVC100,0:norm=PAL-M:volume=100:immediatemode=0:forceaudio=1 -o teste.avi -ovc lavc -lavcopts vcodec=mjpeg:aspect=4/3 -aspect 4:3 -noautoexpand -oac lavc -noskip -vf pp=lb,scale=640:480 -endpos 00:00:10
 
-#ffmpeg -i $input -af afftdn=tn=enable:nt=s:om=o -vcodec copy $output
+#ffmpeg -i $INPUT -af afftdn=tn=enable:nt=s:om=o -acodec libmp3lame -vcodec copy $CFILE
