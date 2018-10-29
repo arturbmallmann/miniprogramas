@@ -34,17 +34,18 @@
 	}
 
 #o vf altera diretamente o conteudo
-DINTERLACE="-vf pp=lb,scale=640:480"
+RESOLUTION="700:525"
+DINTERLACE="-vf pp=lb,scale=${RESOLUTION}"
 TIME=""
 FILE=""
 LOGD=${HOME}/.capturar
 #BRVIDEO=1800
 #BRAUDIO=128
-DEVICE=1
+DEVICE=0
 CHANNELS=1 #MONO
 VOLUME=50
-#TVSTR="-tv alsa=yes:audiorate=48000:amode=0:device=/dev/video1:adevice=hw.DVC100,0:norm=PAL-M:volume=10:immediatemode=0:forceaudio=1"
-TVSTR="-tv alsa=yes:audiorate=48000:amode=0:device=/dev/video1:adevice=hw.SB:norm=PAL-M:volume=10:immediatemode=0:forceaudio=1:forcechan=1"
+#TVSTR="-tv alsa=yes:audiorate=48000:amode=0:device=/dev/video0:adevice=hw.DVC100:norm=PAL-M:volume=10:immediatemode=0:forceaudio=1"
+TVSTR="-tv alsa=yes:audiorate=48000:amode=0:device=/dev/video0:adevice=hw.SB:norm=PAL-M:volume=10:immediatemode=0:forceaudio=1:forcechan=1"
 if [ ! -d $LOGD ];then
 	mkdir $LOGD
 fi
@@ -75,12 +76,12 @@ done
 		;;
 		rec)
 			createfile
-			avconv -f video4linux2 -i /dev/video$DEVICE -f alsa -i hw:SB -qscale 1.33 -r 24.00 -vf yadif,scale=640:480:-1 -b:a 320k -vol $VOLUME -acodec libmp3lame -ac $CHANNELS $TIME -y $CFILE -threads 12 # > ${LOGD}/rec.out 2>${LOGD}/rec.err
+			avconv -f video4linux2 -i /dev/video$DEVICE -f alsa -i hw:SB -qscale 1.33 -r 24.00 -vf yadif,scale=$RESOLUTION:-1 -b:a 320k -vol $VOLUME -acodec libmp3lame -ac $CHANNELS $TIME -y $CFILE -threads 12 # > ${LOGD}/rec.out 2>${LOGD}/rec.err
 		;;
 		recw)
 			mkfifo ./pipe
 			cat ./pipe|tee -a -i $CFILE|mplayer pipe --cache=8196
-			avconv -f video4linux2 -i /dev/video$DEVICE -f alsa -i hw:SB -qscale 1.33 -r 24.00 -vf yadif,scale=640:480:-1 -b:a 320k -vol $VOLUME -acodec libmp3lame -ac $CHANNELS $TIME -threads 12 -f avi pipe:pipe 
+			avconv -f video4linux2 -i /dev/video$DEVICE -f alsa -i hw:SB -qscale 1.33 -r 24.00 -vf yadif,scale=$RESOLUTION:-1 -b:a 320k -vol $VOLUME -acodec libmp3lame -ac $CHANNELS $TIME -threads 12 -f avi pipe:pipe 
 			#|tee -a -i $CFILE| mplayer - --cache=8196
 			rm pipe
 		;;
@@ -110,3 +111,4 @@ done
 #mplayer tv:// -tv alsa=yes:audiorate=48000:amode=1:device=/dev/video1:adevice=hw.DVC100,0:norm=PAL-M:volume=100:immediatemode=0:forceaudio=1 -vo gl
 #mencoder tv:// -v -tv fps=30:alsa=yes:audiorate=48000:amode=1:device=/dev/video1:adevice=hw.DVC100,0:norm=PAL-M:volume=100:immediatemode=0:forceaudio=1 -o teste.avi -ovc lavc -lavcopts vcodec=mjpeg:aspect=4/3 -aspect 4:3 -noautoexpand -oac lavc -noskip -vf pp=lb,scale=640:480 -endpos 00:00:10
 
+#ffmpeg -i $INPUT -af afftdn=tn=enable:nt=s:om=o -acodec libmp3lame -vcodec copy $CFILE
