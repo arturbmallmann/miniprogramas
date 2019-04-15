@@ -9,6 +9,7 @@ set ai
 map <F2> <esc>:!clear&make<cr>
 map <F3> <esc>:!clear&make test<cr>
 map <F4> <esc>:!clear&make clean<cr>
+map <F5> <esc>:!xterm -e "cd $PWD&bash" 2> /dev/null& <cr>
 map <F11> <esc>:set ai!<cr>
 map <F9> <esc>:write<cr>
 map <F10> <esc>:quit<cr>
