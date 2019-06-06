@@ -76,7 +76,9 @@ done
 		;;
 		rec)
 			createfile
-			avconv -f video4linux2 -i /dev/video$DEVICE -f alsa -i hw:SB -qscale 1.33 -r 24.00 -vf yadif,scale=$RESOLUTION:-1 -b:a 320k -vol $VOLUME -acodec libmp3lame -ac $CHANNELS $TIME -y $CFILE -threads 12 # > ${LOGD}/rec.out 2>${LOGD}/rec.err
+			#avconv -f video4linux2 -i /dev/video$DEVICE -f alsa -i hw:SB -qscale 1.33 -r 24.00 -vf yadif,scale=$RESOLUTION:-1 -b:a 320k -vol $VOLUME -acodec libmp3lame -ac $CHANNELS $TIME -y $CFILE -threads 12 # > ${LOGD}/rec.out 2>${LOGD}/rec.err
+
+			ffmpeg -f video4linux2 -i /dev/video$DEVICE -f alsa -i hw:SB -qscale 1.33 -r 24.00 -vf yadif,scale=$RESOLUTION:-1 -b:a 320k -vol $VOLUME -acodec libmp3lame -ac $CHANNELS $TIME -y $CFILE -threads 12 # > ${LOGD}/rec.out 2>${LOGD}/rec.err
 		;;
 		recw)
 			mkfifo ./pipe
@@ -87,7 +89,9 @@ done
 		;;
 		cortar)
 			createfile
-			avconv -i ${INPUT} -vcodec copy -acodec copy $BEGIN $TIME -y $CFILE # > ${LOGD}/conv.out 2>${LOGD}/conv.err
+			echo entrada: $INPUT Saída: $CFILE
+			#avconv -i ${INPUT} -vcodec copy -acodec copy $BEGIN $TIME -y $CFILE # > ${LOGD}/conv.out 2>${LOGD}/conv.err
+			ffmpeg -i ${INPUT} -vcodec copy -acodec copy $BEGIN $TIME -y $CFILE # > ${LOGD}/conv.out 2>${LOGD}/conv.err
 			;;
 		cortarmono)
 			createfile
@@ -111,4 +115,7 @@ done
 #mplayer tv:// -tv alsa=yes:audiorate=48000:amode=1:device=/dev/video1:adevice=hw.DVC100,0:norm=PAL-M:volume=100:immediatemode=0:forceaudio=1 -vo gl
 #mencoder tv:// -v -tv fps=30:alsa=yes:audiorate=48000:amode=1:device=/dev/video1:adevice=hw.DVC100,0:norm=PAL-M:volume=100:immediatemode=0:forceaudio=1 -o teste.avi -ovc lavc -lavcopts vcodec=mjpeg:aspect=4/3 -aspect 4:3 -noautoexpand -oac lavc -noskip -vf pp=lb,scale=640:480 -endpos 00:00:10
 
+# eliminar ruídos
 #ffmpeg -i $INPUT -af afftdn=tn=enable:nt=s:om=o -acodec libmp3lame -vcodec copy $CFILE
+# mudar volume:
+# ffmpeg -i $INPUT -acodec libmp3lame -vcodec copy -af aeval='val(ch)*10':c=same $FILE
