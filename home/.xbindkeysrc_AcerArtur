@@ -43,8 +43,8 @@
   control+shift + q
 
 # set directly keycode (here control + f with my keyboard)
-"xterm"
-  c:41 + m:0x4
+#"xterm"
+#  c:41 + m:0x4
 
 # specify a mouse button
 "xterm"
@@ -74,7 +74,7 @@
 "brilhoTela.py up"
     m:0x0 + c:233
     XF86MonBrightnessUp
-"xterm top"
+"xterm htop"
     m:0x4 + c:9
     Control + Escape
 "xterm wicd-curses"
@@ -93,3 +93,6 @@
 "amixer set Master toggle"
     m:0x0 + c:121
     XF86AudioMute
+"xterm alsamixer"
+    m:0x8 + c:74
+    Alt + F8
