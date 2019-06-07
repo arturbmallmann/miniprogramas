@@ -1,6 +1,20 @@
 Aluno: Artur Bernardo Mallmann
 
+Sobre Raízes e Funções
 
+Vimos em aulo os métodos da bisseção, secantes e newton para encontrar as raízes
+de uma função. Cada um destes tem seu valor e podem se complementar para
+suprir melhor as nossas necessidades.
+
+PRimeiramente temos o método da bisseção, que é de funcionamento relativamente
+simples. Primeiramente usamos dois pontos para limitar a região que testaremos
+a existencia de raízes, de preferência estes pontos devem ser de sinal
+diferente, um positivo e outro negativo, assim sendo a função contínua é
+garantido que encontraremos ao menos uma raíz.
+
+Depois conhecemos os métodos das secantes e de newton. Ambos tem sua
+fundamentação nos calculos cálculos diferenciais. Em grande parte dos
+casos a vantagem de ambos é a velocidade a qual convergem
 
 Fontes:
 https://www.ime.usp.br/~asano/LivroNumerico/LivroNumerico.pdf
