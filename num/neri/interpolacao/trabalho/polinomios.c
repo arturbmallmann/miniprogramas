@@ -49,49 +49,52 @@
 -11.2,	2.5307997196893,
 -11.6,	2.94633880660777,
 -12,	3.2811696398838,
+
+
 */
-#define N 13
-    long double fx[]= { 
-                        -0.2,
+
+#define N 14
+    long double x[]= { 
+                        -0.7,
                         -1.2,
-                        -1.7,
+                        -1.6,
+                        -2.2,
+                        -2.4,
                         -2.8,
-                        -4,
-                        -4.8,
-                        -5.6,
-                        -6,
-                        -8,
+                        -3.2,
+                        -3.6,
+                        -5.8,
+                        -5.9,
+                        -6.8,
+                        -8.8,
                         -9.6,
-                        -10.4,
-                        -11.2,
-                        -12
+                        -10
                         
     };
-    long double x[]=  {
-                        -0.764080645739455,
+    long double fx[]=  {0.768380510234934,
                         1.30531367616324,
-                        1.0684407169124,
+                        1.13999050320709,
+                        0.662051936793094,
+                        0.510430776739371,
                         0.284580546333897,
-                        0.56964125378033,
-                        1.4494752045635,
-                        2.37429680423322,
-                        2.69251508861534,
-                        2.05843998196245,
+                        0.207100574186043,
+                        0.304004235322449,
+                        2.55086290136597,
+                        2.62635511800892,
+                        2.84941874780725,
+                        1.43521992323121,
                         1.26428812995407,
-                        1.7039373065791,
-                        2.5307997196893,
-                        3.2811696398838
+                        1.41339489404
     }; 
-    
     long double matrix[N][N];
     
 void printMatrix(){
     printf("x       fx");
     
     for(int i=0; i < N ; i++){//linha
-        printf("\n%.2Lf",x[i]);
+        printf("\n%Lf",x[i]);
         for (int o=0; o < N; o++){//coluna
-            printf("    %.2Lf",matrix[i][o]);
+            printf("    %Lf",matrix[i][o]);
         }
     }
 }
@@ -110,27 +113,34 @@ for(int i=0; i < N; i++)//linha
      printf("operações na matrix:\n");
      printf("y ordem\n");
     for(int y=0;y < (N-ordem);y++){//linha
-        printf("[%d] [%d] = (%Lf - %Lf) / (%Lf - %Lf)\n",y,ordem,matrix[y+1][ordem-1],matrix[y][ordem-1],x[y+ordem],x[y]);
-        
         matrix[y][ordem]=(matrix[y+1][ordem-1] - matrix[y][ordem-1]) / (x[y+ordem] - x[y]);
+        printf("[%d] [%d] %Lf= (%Lf - %Lf) / (%Lf - %Lf)\n",y,ordem,matrix[y][ordem],matrix[y+1][ordem-1],matrix[y][ordem-1],x[y+ordem],x[y]);
     }
  }
 }
+
+long double funcao(long double xis){
+    long double result = powl(4,xis)+cos(-xis+(1/xis))+log(-xis);//funcao fornecida no enunciado
+    return result;
+}
 void calcula(long double xis){
-    long double pn=matrix[0][0];//y0
+    long double pn=0.0;//=matrix[0][0];//y0
     
-    for(int i=1; i<N ; i++){
-        printf("grau %d\n",i);
+    for(int i=0; i<N ; i++){
+        printf("\ngrau %d\n %Lf * (",i,matrix[0][i]);
         long double multi=1.0;//começar com um elemento neutro sempre é bom :) kkkk
         for(int o=0; o<i; o++){
-            printf("%Lf * (%Lf - %Lf)=",multi, xis,x[o]);
-            multi+=multi*(xis-x[o]);
-            printf("%Lf\n",multi);
+            printf("(%Lf - %Lf)+",xis,x[o]);
+            multi=multi*(xis-x[o]);
+       //     printf("%Lf\n",multi);
         }
         pn+=matrix[0][i]*multi;
     }
-    printf("p(%Lf) = %Lf\n",xis,pn);
+    printf("\np(%Lf) = %Lf\n",xis,pn);
+    printf("f(x): %Lf\n",funcao(xis));
+    printf("Erro: pn - f(x)= %Lf\n",pn-funcao(xis));
 }
+
 int main(){
     prepMatrix();
     printMatrix();
