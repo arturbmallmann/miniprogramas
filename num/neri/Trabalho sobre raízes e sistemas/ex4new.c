@@ -1,19 +1,30 @@
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
+
+#define true 1
+#define false 0
+
+typedef int bool;
+
+#define R 9
+int flag = pow(10,4);
 long double eq(long double x){
-	return ( -1*pow(x,3) + 3*pow(x,2)+x-5 );
+	return ( cos(50*x + R) - sin(50*x -R));
 }
 long double deriv(long double x){
-	return -3*pow(x,2) + 6*x + 1;
+	return ( -50*( sin(50*x + R) + cos(50*x - R) ) );
 }
-long double newton(long double x1){
-		
-}
+
 int check(long double a,long double b){
+	if(flag--==0){
+		printf("execuções em excesso");
+		exit(0);
+	}
 	long double dif = a-b;
 	dif = dif > 0 ? dif: dif*-1;
 //	printf("dif |%Lf - %Lf| = %Lf",a,b,dif);
-	if(dif >= powl(10.,-4))
+	if(dif >= powl(10.,-10))
 		return true;
 	return false;
 }

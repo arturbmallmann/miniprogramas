@@ -21,6 +21,22 @@ gcc nome.c -lm -o nome
 		aproximação: 1.13143562441
 		iterações: 37
 
+4) devido aos ciclos serem bastante "rápidos" podemos encontrar diversas
+raízes próximas umas das outras, com ciclos em intervalos pi/50
+usando método de newton usei chute com intervalos próximos destes
+0.06283185307179587, mais precisamente:
+
+chute 0.06:
+raiz da equacao é: 0.0785398
+iterações: 5
+
+chute 0.12:
+raiz da equacao é: 0.141372
+iterações: 5
+
+chute 0.19:
+raiz da equacao é: 0.204204
+iterações: 4
 
 5)
 a) A é convergente
