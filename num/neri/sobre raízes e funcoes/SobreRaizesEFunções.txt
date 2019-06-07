@@ -10,11 +10,13 @@ PRimeiramente temos o método da bisseção, que é de funcionamento relativamen
 simples. Primeiramente usamos dois pontos para limitar a região que testaremos
 a existencia de raízes, de preferência estes pontos devem ser de sinal
 diferente, um positivo e outro negativo, assim sendo a função contínua é
-garantido que encontraremos ao menos uma raíz.
+garantido que encontraremos ao menos uma raíz, conforme o Teorema do Valor
+Médio.
 
-Depois conhecemos os métodos das secantes e de newton. Ambos tem sua
-fundamentação nos calculos cálculos diferenciais. Em grande parte dos
-casos a vantagem de ambos é a velocidade a qual convergem
+Posteriormente somos apresentados aos métodos das secantes e de newton. Ambos tem sua
+fundamentação nos cálculos diferenciais. Em grande parte dos
+casos a vantagem de ambos é a velocidade a qual convergem. Porém para isto é
+bom se certificar que haverá a convergência
 
 Fontes:
 https://www.ime.usp.br/~asano/LivroNumerico/LivroNumerico.pdf
