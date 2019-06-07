@@ -10,7 +10,7 @@
 
 int flag = pow(10,4);
 long double f(long double x){
-	return x*powl(E,-x * R) - powl(E, - 5);
+	return powl(x, 49.37) - R*49.37;
 }
 
 int check(long double a,long double b){

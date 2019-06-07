@@ -5,7 +5,22 @@ make
 caso deseje compilar manualmente:
 gcc nome.c -lm -o nome
 
-1) 9 
+1) r=9 
+
+2) encontrei duas raizes usando o método da bissecao:
+	com um intervalo de 0 à 0.4 encontrei:
+	 raiz da equacao é: 0.00718826362863
+	 iterações: 32
+
+	com um intervalo de .4 à 1 encontrei:
+	 raiz da equacao é: 0.47217781893
+	 iterações: 33
+
+3) primeiramente eu rearrangei a expressão conforme a imagem ex3.jpg
+	depois apliquei o método da bisseção em um intervalo de 0 à 10:
+		aproximação: 1.13143562441
+		iterações: 37
+
 
 5)
 a) A é convergente
