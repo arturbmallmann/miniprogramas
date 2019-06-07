@@ -4,7 +4,7 @@
 
 #define M 3
 #define N 3
-#define Er 4
+#define Er 10
 
 #define true 1
 #define false 0
@@ -28,40 +28,47 @@ long double sum(long double vet[M]){
 long double mod(long double x){
 	return x<0? -1*x : x;
 }
+int flag=powl(10,4);//parar esta bagaça
 int main(){
 //	printf("%d %d\n", sizeof(double),sizeof(long double));
-	long double matriz[M][N]={{4, 2, 2, -1},{-1,5,0,-1},{1,-1,4,-1},{1,-1,1,-6}};
-	long double b[M]={5,3,2,3};
-	long double xm[M],xm1[M]={0,0,0,0};	//VALOR CHUTE
+	long double matriz[M][N]={
+								{ 3, 0, 1},
+								{ 1,-1, 0},
+								{ 3, 1, 2}
+							};
+	long double b[M]={5,3,2};
+	long double xm[M],xm1[M]={0,0,0};	//VALOR CHUTE
 	int it=0;
 	printf("insira os valores de chute md%Lf:\n",mod(-1.));
 	for(int i=0; i < M ; i++)
 		scanf("%Lf",&xm[i]);
 
-	bool flag = 1;
+	bool flag1 = 1;
 	double erro =  powl(10.,-Er);
 
 			printf("Erro: %lf matriz:\n",erro);
 			print_matrix(matriz,b);
-	while(mod(sum(xm) - sum(xm1)) > erro ||flag==1){
-		for(int i=0;i<M;i++)
-			xm1[i]=xm[i];
+	while(flag--!=0 && (mod(sum(xm) - sum(xm1)) > erro||flag1==1) ){
+		for(int i=0;i<M;i++)	//salva os valores antigos de x, y, z e etc...
+			xm1[i]=xm[i];		//gauss-seidel é melhor e não requer, nã nã nã nã nã NÃ!!!
 		printf("xm-1 %Lf xm %Lf\n\n",sum(xm1),sum(xm));
-		flag = 0;
+		flag1 = 0;
 
 			for(int i=0; i <M ; i++){
 				long double sum= 0.;
-				
+				printf("X[%d] = \(%.10Lf -\(",i,b[i]);
 				for(int j=0;j<N;j++){
+					printf(" %Lf * %Lf",matriz[i][j],xm1[j]);
 					if(j!=i){
 						sum+=matriz[i][j]*xm1[j];
 					}
 				}
-				xm[i]=(b[i]/matriz[i][i])-(sum/matriz[i][i]);
+				xm[i]=(b[i]-sum)/matriz[i][i];
 //			printf("b[%d]=%Lf sum=%Lf\n",i,b[i],sum);
-			printf("i-1:	| %.4Lf |	i: |%.4Lf|\n",xm1[i],xm[i]);
+				printf(" )/%.10Lf",matriz[i][i]);
+				printf("i-1:	| %.10Lf |	i: |%.10Lf|\n",xm1[i],xm[i]);
 			}
-			printf("sum:	| %.4Lf |	i: |%.4Lf|\n",sum(xm1),sum(xm));
+			printf("sum:	| %.10Lf |	i: |%.10Lf|\n",sum(xm1),sum(xm));
 		printf("iteracoes: %d\n",++it);
 	}
 return 0;

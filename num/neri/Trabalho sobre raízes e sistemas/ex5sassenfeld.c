@@ -14,6 +14,7 @@ int D[8][8]=
     {   0, 0, 0,-1, 0, 5, 4,-1},
     {   0, 0, 0,-1,-1, 0,-1, 5}
 };
+int S[3][3]={{3,0,1},{1,-1,0},{3,1,2}};
 int test(int dim,int m[][dim]){
     printf("matris %d x %d:\n",dim,dim);
     double * b = malloc(sizeof(double)*dim);
@@ -45,7 +46,8 @@ int main(){
     int ba = test(3,A);
     int bm = test(3,M);
     int bd = test(8,D);
-    printf("Matris A %d\n Matris M %d\nMatris D %d\n",ba,bm,bd);
+	int bs = test(3,S);
+    printf("Matris A %d\n Matris M %d\nMatris D %d\nMatris S %d\n",ba,bm,bd,bs);
 
     return 0;
 }
