@@ -1,0 +1,9 @@
+Aluno: Artur Bernardo Mallmann
+
+
+
+Fontes:
+https://www.ime.usp.br/~asano/LivroNumerico/LivroNumerico.pdf
+
+https://www.ufrgs.br/reamat/CalculoNumerico/livro-py/livro-py.pdf
+
