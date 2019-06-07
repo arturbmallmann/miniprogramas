@@ -1,1 +1,20 @@
- 
+Artur Bernardo Mallmann
+
+para compilar execute: gcc -lm polinomios.c -o polinomios
+
+A)
+p(-0.990000) = 1.256933
+p(-2.350000) = 0.546530
+p(-2.870000) = 0.259156
+p(-6.234000) = 2.807230
+p(-9.000000) = 1.234905
+
+b)
+0.013695
+-0.000014
+-0.000003
+-0.001080
+-0.102509
+
+c)
+No caso do  -0.234 quanto mais polinomios maior foi o erro pois os pesos das outras coordenas tende a ter um maior peso, o contrário do que ocorre no -7.
