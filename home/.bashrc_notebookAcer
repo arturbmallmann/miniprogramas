@@ -18,3 +18,4 @@ alias ll='ls -lh'
 alias la='ls -lah'
 alias l="ls -l"
 alias newterm='xterm -e "cd $PWD&bash" 2> /dev/null &'
+alias rm='rm -i'
