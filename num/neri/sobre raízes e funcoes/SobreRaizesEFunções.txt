@@ -2,24 +2,34 @@ Aluno: Artur Bernardo Mallmann
 
 Sobre Raízes e Funções
 
-Vimos em aulo os métodos da bisseção, secantes e newton para encontrar as raízes
+Vimos em aula os métodos da Bisseção, Das Secantes e de Newton para encontrar as raízes
 de uma função. Cada um destes tem seu valor e podem se complementar para
 suprir melhor as nossas necessidades.
 
-PRimeiramente temos o método da bisseção, que é de funcionamento relativamente
-simples. Primeiramente usamos dois pontos para limitar a região que testaremos
-a existencia de raízes, de preferência estes pontos devem ser de sinal
-diferente, um positivo e outro negativo, assim sendo a função contínua é
+Primeiramente temos o método da bisseção, que é de funcionamento relativamente
+simples. Usa-se dois pontos para limitar a região que exitem raízes, de preferência estes pontos devem ser de sinal
+diferente, um positivo e outro negativo.A função sendo contínua é
 garantido que encontraremos ao menos uma raíz, conforme o Teorema do Valor
 Médio.
 
-Posteriormente somos apresentados aos métodos das secantes e de newton. Ambos tem sua
+Posteriormente somos apresentados aos métodos das Secantes e de Newton. Ambos tem sua
 fundamentação nos cálculos diferenciais. Em grande parte dos
 casos a vantagem de ambos é a velocidade a qual convergem. Porém para isto é
-bom se certificar que haverá a convergência
+bom se certificar que haverá a convergência.
+
+Quando não usar o Método da Bisseção:
+Mesmo a bisseção sendo o método que na dúvida resolve maior parte dos
+problemas sem crise exige um esforço extra para encontrar o intervalor
+
+Quando não usar o Método das Secantes:
+Não converge bem
+
+Quanto não usar o Método de newton:
+Em alguns casos em que a Derivada é difícil de calcular ou quando o método não
+converge bem.
 
 Fontes:
 https://www.ime.usp.br/~asano/LivroNumerico/LivroNumerico.pdf
-
+https://www.math.tecnico.ulisboa.pt/~calves/courses/eqn/capii213.html
 https://www.ufrgs.br/reamat/CalculoNumerico/livro-py/livro-py.pdf
 
