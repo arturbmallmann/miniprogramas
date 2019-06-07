@@ -1,5 +1,5 @@
 Artur Bernardo Mallmann
-
+Mat: 1511100032
 para compilar todos os programas:
 make
 caso deseje compilar manualmente:
@@ -46,4 +46,4 @@ b) M é convergente
 c) D é convergente
 
 6)
-
+7)
