@@ -7,6 +7,17 @@ gcc nome.c -lm -o nome
 
 1) 9 
 
+2) encontrei duas raizes usando o método da bissecao:
+	com um intervalo de 0 à 0.4 encontrei:
+	 raiz da equacao é: 0.00718826362863
+	 iterações: 32
+	com um intervalo de .4 à 1 encontrei:
+	 raiz da equacao é: 0.47217781893
+	 iterações: 33
+
+
+
+
 5)
 a) A é convergente
 b) M é convergente

@@ -6,10 +6,11 @@
 #define false 0
 
 #define R 9
+#define E 2.7182818284590452354
 
 int flag = pow(10,4);
-long double f(long double x){
-	return x*pow(M_E,-x * R) - pow(M_E - 5);
+long double f(long double x)x{
+	return x*powl(E,-x * R) - powl(E, - 5);
 }
 
 int check(long double a,long double b){
@@ -25,16 +26,16 @@ int check(long double a,long double b){
 }
 
 int main (){
-	long double x,y,aux=0;
+	long double x,y;
 	int i=0;
 	printf("Entre com valor de a e b \n");
 	scanf("%Lg %Lg", &x, &y);
-	printf("a=%Lg b=%Lg", x, y);
+	printf("a=%Lg b=%Lg\n", x, y);
 //	int first=1;
 	while(check(x,y)){
 //		first=0;
-		bool xp=f(x) >= 0,	yp=f(y)>=0,	xyp=f((x+y)/2) >= 0;
-		printf("f(%Lg) = %Lg, f(%Lg)=%Lg )/2\n",x,f(y),y,f(y));
+		int xp=f(x) >= 0,	yp=f(y)>=0,	xyp=f((x+y)/2) >= 0;
+		printf("f(%.10Lg) = %.10Lg, f(%.10Lg)=%Lg )/2\n",x,f(x),y,f(y));
 		if(xp==yp){
 			printf("não existem raizes neste intervalo");
 			return 0;
@@ -45,6 +46,6 @@ int main (){
 			y=(x+y)/2;
 		i++;
 	}
-	printf("\nraiz da equacao é: %Lg\niterações: %d\n",x,i);
+	printf("\nraiz da equacao é: %.12Lg\niterações: %d\n",x,i);
 	return 0;
 }
