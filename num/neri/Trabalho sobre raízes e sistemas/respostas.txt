@@ -1,1 +1,13 @@
+Artur Bernardo Mallmann
+
+para compilar todos os programas:
+make
+caso deseje compilar manualmente:
+gcc nome.c -lm -o nome
+
 1) 9 
+
+5)
+a) A é convergente
+b) M é convergente
+c) D é convergente

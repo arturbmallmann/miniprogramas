@@ -2,18 +2,18 @@ CC = gcc
 CFLAGS = -g -Wall -Wno-deprecated -std=c99
 LIBS = -lm 
 
-all:ex1 sassenfeld
+all:ex1 ex2bissecao ex5sassenfeld
 
 ex1: ex1.o
 	$(CC) $(CFLAGS) $< -o $@ $(LIBS)
 
-#ex2: ex2.o
-#	$(CC) $(CFLAGS) $< -o $@ $(LIBS)
+ex2bissecao: ex2bissecao.o
+	$(CC) $(CFLAGS) $< -o $@ $(LIBS)
 #ex3: ex3.o
 #	$(CC) $(CFLAGS) $< -o $@ $(LIBS)
 #ex4: ex4.o
 #	$(CC) $(CFLAGS) $< -o $@ $(LIBS)
-sassenfeld: sassenfeld.o
+ex5sassenfeld: ex5sassenfeld.o
 	$(CC) $(CFLAGS) $< -o $@ $(LIBS)
 #ex6: ex6.o
 #	$(CC) $(CFLAGS) $< -o $@ $(LIBS)
@@ -23,6 +23,7 @@ sassenfeld: sassenfeld.o
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $<
 test: 
-	exec ./sassenfeld
+	exec ./ex2bissecao
+
 clean:
 	-rm -f *.o main
