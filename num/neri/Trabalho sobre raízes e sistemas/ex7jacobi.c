@@ -2,9 +2,14 @@
 #include <stdio.h>
 #include <string.h>
 
-#define M 4
-#define N 4
+#define M 3
+#define N 3
 #define Er 4
+
+#define true 1
+#define false 0
+typedef int bool;
+
 void print_matrix(long double matrix[M][N], long double b[M]){
 	for(int i=0;i<M;i++){
 		printf("|");
