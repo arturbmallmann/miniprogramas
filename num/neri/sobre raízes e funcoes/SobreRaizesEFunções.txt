@@ -18,8 +18,10 @@ casos a vantagem de ambos é a velocidade a qual convergem. Porém para isto é
 bom se certificar que haverá a convergência.
 
 Quando não usar o Método da Bisseção:
-Mesmo a bisseção sendo o método que na dúvida resolve maior parte dos
-problemas sem crise exige um esforço extra para encontrar o intervalor
+Mesmo a bisseção sendo o método que na dúvidar resolve maior parte dos
+problemas, principalmente quanto precisamos fazer a redução de intervalo, em
+diversos casos ela pode não suprir com um desempenho desejável em alguns
+casos.
 
 Quando não usar o Método das Secantes:
 Não converge bem
@@ -29,6 +31,7 @@ Em alguns casos em que a Derivada é difícil de calcular ou quando o método n�
 converge bem.
 
 Fontes:
+http://www.univasf.edu.br/~jorge.cavalcanti/4CN_Parte3_Comparacao.pdf
 https://www.ime.usp.br/~asano/LivroNumerico/LivroNumerico.pdf
 https://www.math.tecnico.ulisboa.pt/~calves/courses/eqn/capii213.html
 https://www.ufrgs.br/reamat/CalculoNumerico/livro-py/livro-py.pdf
