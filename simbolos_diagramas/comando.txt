@@ -1,0 +1,2 @@
+comando: xsltproc shape2svg.xslt firewall.shape > firewall.svg
+xsltproc svg2shape.xslt firewall.svg > firewall.shape

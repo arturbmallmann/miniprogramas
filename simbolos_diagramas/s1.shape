@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<shape xmlns="http://www.daa.com.au/~james/dia-shape-ns" xmlns:svg="http://www.w3.org/2000/svg" xmlns:math="http://exslt.org/math" xmlns:dia="http://www.daa.com.au/~james/dia-shape-ns" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+  <name/>
+  <connections/>
+  <aspectratio type="fixed"/>
+  <svg:svg width="210mm" height="297mm" viewBox="0 0 210 297" version="1.1" id="svg3561">
+    <svg:metadata id="metadata3558">
+      <svg:RDF>
+        <svg:Work xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" rdf:about="">
+          <svg:format>image/svg+xml</svg:format>
+          <svg:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+          <svg:title/>
+        </svg:Work>
+      </svg:RDF>
+    </svg:metadata>
+    <svg:g id="layer1">
+      <svg:g id="g3469" transform="translate(-57.019755,-75.074563)">
+        <svg:g id="g1517-8-2" transform="translate(74.488198,86.596795)">
+          <svg:path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend-6-3)" d="m 46.965803,37.787123 10.837664,-0.02975" id="path26-7-5"/>
+          <svg:path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 58.399592,34.870075 0.0072,5.806834" id="path1163-9-4"/>
+          <svg:path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 55.64637,43.441765 5.651867,0.01736 0.105423,-11.465434 -5.838417,-0.03017" id="path1175-2-7"/>
+        </svg:g>
+        <svg:path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 142.49225,139.23704 -2.72622,-2.76701 0.0103,-22.62252 3.38195,-2.16422 -0.76152,-0.69179" id="path1619-4"/>
+        <svg:path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 150.74241,110.87089 2.72622,2.76701 -0.0103,22.62252 -3.38195,2.16423 0.76152,0.69178" id="path1619-2-4"/>
+        <svg:path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker1723-4)" d="m 153.45833,124.35417 10.8068,0.0391" id="path1719-3"/>
+      </svg:g>
+    </svg:g>
+  </svg:svg>
+</shape>

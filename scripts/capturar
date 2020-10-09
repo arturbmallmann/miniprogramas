@@ -76,9 +76,10 @@ done
 		;;
 		rec)
 			createfile
-			#avconv -f video4linux2 -i /dev/video$DEVICE -f alsa -i hw:SB -qscale 1.33 -r 24.00 -vf yadif,scale=$RESOLUTION:-1 -b:a 320k -vol $VOLUME -acodec libmp3lame -ac $CHANNELS $TIME -y $CFILE -threads 12 # > ${LOGD}/rec.out 2>${LOGD}/rec.err
+			avconv -f video4linux2 -i /dev/video$DEVICE -f alsa -i hw:SB  -r 24.00 -vf yadif,scale=$RESOLUTION:-1 -b:a 320k -vol $VOLUME -acodec libmp3lame -ac $CHANNELS $TIME -y $CFILE -threads 12 # > ${LOGD}/rec.out 2>${LOGD}/rec.err
+            #avconv -f video4linux2 -i /dev/video$DEVICE -f alsa -i hw:SB -qscale 1.33 -r 24.00 -vf yadif,scale=$RESOLUTION:-1 -b:a 320k -vol $VOLUME -acodec libmp3lame -ac $CHANNELS $TIME -y $CFILE -threads 12 # > ${LOGD}/rec.out 2>${LOGD}/rec.err
 
-			ffmpeg -f video4linux2 -i /dev/video$DEVICE -f alsa -i hw:SB -qscale 1.33 -r 24.00 -vf yadif,scale=$RESOLUTION:-1 -b:a 320k -vol $VOLUME -acodec libmp3lame -ac $CHANNELS $TIME -y $CFILE -threads 12 # > ${LOGD}/rec.out 2>${LOGD}/rec.err
+			#ffmpeg -f video4linux2 -i /dev/video$DEVICE -f alsa -i hw:SB -qscale 1.33 -r 24.00 -vf yadif,scale=$RESOLUTION:-1 -b:a 320k -vol $VOLUME -acodec libmp3lame -ac $CHANNELS $TIME -y $CFILE -threads 12 # > ${LOGD}/rec.out 2>${LOGD}/rec.err
 		;;
 		recw)
 			mkfifo ./pipe
