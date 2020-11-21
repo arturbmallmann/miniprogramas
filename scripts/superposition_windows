@@ -1,0 +1,3 @@
+#!/bin/bash
+protontricks -c 'wine C:/windows/command/start.exe /Unix /mnt/jogos/steamapps/compatdata/12210/pfx/drive_c/users/Public/Superposition\ Benchmark.lnk' 12210
+

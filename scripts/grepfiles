@@ -23,16 +23,9 @@ function sif () {
 	FIRST=true
 		for i in $@
 			do
-				if [[ -n `cat $i 2>/dev/shm/.grepfileslog |grep $GPARAM $KEYWORD ` ]]
+				if [[ -n `cat $i 2>/dev/shm/.grepfileslog |grep $GPARAM $KEYWORD` ]]
 					then
-#						echo [entrou]
-						if [[ $FIRST == true ]]
-							then
-								FIRST=false
-							else
-								OUTPUT+=$'\n'
-						fi
-						OUTPUT+=$i
+						echo $i
 				fi
 			done;
 			return 0
@@ -71,6 +64,7 @@ function main () {
 						;;
 					1) 
 						KEYWORD=$arg
+						echo "Keyword: ${KEYWORD}"
 						;;
 					2)
 						line=$arg
@@ -93,13 +87,6 @@ function main () {
 		help
 	fi
 
-	if [[ $line -ne 0 ]]
-		then
-			echo "$OUTPUT" | catchline $line
-#			echo "$OUTPUT" |$my_dir/catchline $line
-		else
-			echo "$OUTPUT"
-	fi
 }
 
 main $@

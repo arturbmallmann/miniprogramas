@@ -1,0 +1,13 @@
+#!/usr/bin/python3
+import sys
+
+def count(text):
+	lst = text.split(' ')
+	print(len(lst) - lst.count ("'\\n',"))
+
+def main():
+	print("insert text here and finish it with endl(control D)")
+	text = str(sys.stdin.readlines())
+	count(text)
+if __name__ == "__main__":
+	main()
