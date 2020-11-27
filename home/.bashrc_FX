@@ -69,7 +69,6 @@ if [ -f /usr/bin/git ]
 	echo "$B_NAME"
 fi
 }
-branch_name
 
 case "$TERM" in
 xterm*|rxvt*)
