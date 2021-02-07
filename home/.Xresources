@@ -3,7 +3,8 @@
     Shift <KeyPress> Insert: insert-selection(CLIPBOARD)
 
 xterm*VT100*geometry: 93x24
-xterm*font: -misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1
+!xterm*font: -misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1
+xterm*font: -misc-fixed-medium-r-normal--20-200-75-75-c-100-utf-8
 !xterm*background: #343434
 !xterm*foreground: lightblue
 xterm*loginShell: true

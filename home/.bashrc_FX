@@ -125,12 +125,21 @@ alias conectarcross='ssh -p 9871 -X -C artur@10.0.0.1'
 #alias zsnes='schroot -c jessie -p zsnes'
 #fi
 PATH=$PATH:~/.local/bin:~/local/bin:$HOME/local/src/miniprogramas/scripts
-PATH=$PATH:/opt/rocm/bin/:/opt/rocm/hcc/bin:/opt/rocm/hip/bin:/opt/rocm/opencl/bin:$PATH
+PATH=$PATH:/opt/rocm/bin/:/opt/rocm/hcc/bin:/opt/rocm/hip/bin:/opt/rocm/opencl/bin
 LD_LIBRARY_PATH=/opt/rocm/lib:$LD_LIBRARY_PATH
 HIP_PLATFORM="hcc"
 C_INCLUDE_PATH=$C_INCLUDE_PATH:/usr/include/glib-2.0 #mesmo efeito de -I/...
 CFLAGS="${CFLAGS} -march=bdver1 -mtune=bdver1 -O2"
 CXXFLAGS=${CFLAGS}
+
+NOCS=${HOME}/local/src/redes_NoC
+export HEMPS_PATH=${NOCS}/hemps_OSZ
+export MEMPHIS_PATH=${NOCS}/Memphis
+export MEMPHIS_HOME=${NOCS}/sandbox_memphis
+MIPSC=${NOCS}/mips-elf-gcc-4.1.1
+PATH=${PATH}:${MEMPHIS_PATH}/build_env/bin/:${MIPSC}/bin/:${HEMPS_PATH}/build_env/bin
+MANPATH=${MANPATH}/man
+
 alias rm='rm -i'
 alias xbindremoto='xbindkeys -f ~/.xbindremoto'
 alias conectanote='ssh artur@hpartur.local -X -C -L  -L 5900:localhost:5900'
