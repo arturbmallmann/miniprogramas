@@ -1,0 +1,2 @@
+#!/bin/bash
+ffmpeg -stream_loop -1 -re -i Nyan\ Cat\ \[original\]-QH2-TGUlwu4.mkv -map 0:v -c:v rawvideo -pix_fmt yuv420p -r 30 -f v4l2 /dev/video0
