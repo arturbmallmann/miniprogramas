@@ -1,0 +1,63 @@
+bash (shell script)
+
+Quebras de linha ou ';' são equivalentes
+
+Laços de repetição
+
+for i in LISTA
+do
+	...
+done
+
+while [ COND ]
+do
+	...
+done
+
+condição
+
+if [COND]; then AÇÃO;else AÇÃO; fi
+if [COND]
+	then
+		AÇÃO
+	else
+		AÇÃO
+fi
+
+case compara as oções com a string A
+case $A in
+	\-t*) AÇÃO ;;
+	\--help) AÇÃO ;;
+esac
+
+expressões de comparação
+
+( EXPRESSION )		valor de EXPRESSION (true false)
+! EXPRESSION 		inverso de Expression
+EXP1 -a EXP2		and
+EXP1 -o EXP2		or
+
+Strings:
+-n STRING			tamanho de STRING != 0
+-z STRING			tamanho de STRING == 0
+STRING1 = STRING2	igualdade
+STRING1 != STRING2	diferente
+
+Integers:
+I1 -eq I2				=
+I2 -ne I2				!=
+I1 -ge I2				>=
+I1 -gt I2				>
+I1 -le I2				<=
+I1 -lt I2				<
+
+Arquivos:
+FILE1 -ef FILE2			mesmo arquivo (dispositivo e inode)
+FILE1 -nt FILE2			FILE1 mais recente que FILE2
+FILE1 -ot FILE2			FILE1 mais antigas que FILE2
+-f FILE					FILE existe e é arquivo
+-d FILE					existe e é pasta
+-r FILE					AArquivo pode ser lido
+-w FILE					Arquivo pode ser modificado
+
+
