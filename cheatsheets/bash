@@ -127,6 +127,11 @@ while IFS=' ' read -r f1 f2
 do
 	echo "field # 1 : $f1 ==> field #2 : $f2"
 done < "$file"
+IFS tbm afeta a saída dos parametros(Ex SCRIPT PARAM1 PARAM2 PARAM3):
+IFS='|'
+echo "$@"	saída: PARAM1 PARAM2 PARAM3
+echo $*	saída: PARAM1 PARAM2 PARAM3
+echo "$*"	Saída: PARAM1|PARAM2|PARAM3
 
 DISPLAY:
 Variável responsável por dizer à aplicações gráficas qual instancia de servidor gráfico devem rodar:
