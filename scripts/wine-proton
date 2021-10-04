@@ -1,0 +1,6 @@
+#!/bin/bash
+
+PREFIX=/mnt/hd640/jogos/steamapps/compatdata/271590
+PROTON_PREFIX=~/.steam/steam/steamapps/common/Proton\ 4.11
+#cd "$PROTON_PREFIX"
+WINEPREFIX=${PREFIX}  STEAM_COMPAT_DATA_PATH=${PROTON_PREFIX} exec "${PROTON_PREFIX}/proton" run $@

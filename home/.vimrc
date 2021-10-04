@@ -1,3 +1,4 @@
+"plugin 'suoto/vim-hdl'
 map ,v :e $HOME/.vimrc<CR>
 nmap <F12> :<C-u>source ~/.vimrc <BAR> echo "Vimrc recarregado!"<CR>
 set nu

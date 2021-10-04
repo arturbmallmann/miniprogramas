@@ -1,0 +1,23 @@
+#!/usr/bin/node
+
+const fs = require('fs');
+const detectCharacterEncoding = require('detect-character-encoding');
+const { argv } = require('process');
+
+
+if (argv[2]==null) {
+    console.log("Uso:\ngetencode [nomedoarquivo]");
+}else {
+ 
+    // console.log("Arquivo é: " + argv[2]);
+
+    for (let index = 2; index < argv.length; index++) {
+        const element = argv[index];
+        const fileBuffer = fs.readFileSync(element);
+        const charsetMatch = detectCharacterEncoding(fileBuffer);
+        console.log(element+" "+charsetMatch.encoding);
+    }
+    // console.log(argv[]);
+
+    // console.log(charsetMatch);
+}
